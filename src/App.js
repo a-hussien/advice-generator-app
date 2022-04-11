@@ -51,7 +51,11 @@ const App = () => {
         <div className='advice'>
           <h1 className={`heading animate__animated ${animation}`} style={{color: color}}>
             { !advice.length > 0 && (
-              <span>loading...</span>
+              <div className="loadingio-spinner-spinner-7ot58maybvy">
+                <div className="ldio-wo5mzaaryj">
+                <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+              </div>
+              </div>
             )}
 
             {advice}
