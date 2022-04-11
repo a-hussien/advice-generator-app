@@ -1,38 +1,127 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&family=League+Spartan:wght@300;400&display=swap');
+#root, html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.app {
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('./images/workSpace-alt-min.jpg');
+  /* background: url('./images/workSpace-alt-min.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
+  position: relative;
+  width: 40%;
+  min-height: 20%;
+  height: auto;
+  padding: 2% 4%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1;
+  transform: 0.5s;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  transition: 0.5s;
+  cursor: pointer;
+ }
+ 
+ .card:hover {
+  margin-top: 1rem;
+ }
+
+ .advice {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   justify-items: flex-end;
+   align-items: center;
+   height: auto;
+ }
+
+ .heading {
+  font-family: 'Josefin Sans', 'League Spartan', sans-serif;
+ }
+
+ .getAdvice {
+  background: linear-gradient(-45deg, #cc48ab, #9f69fe, #27c8b7, #4a3ef7);
+  background-size: 800% 400%;
+  padding: 1em 2em;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Josefin Sans', sans-serif;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  cursor: pointer;
+  text-transform: uppercase;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
+          animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
+ }
+ 
+ .getAdvice:hover {
+  -webkit-animation: gradient 3s infinite;
+          animation: gradient 3s infinite;
+  -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
+ }
+ 
+ .getAdvice:active {
+  -webkit-animation: gradient 3s infinite;
+          animation: gradient 3s infinite;
+  -webkit-transform: scale(0.8);
+      -ms-transform: scale(0.8);
+          transform: scale(0.8);
+ }
+ 
+ @-webkit-keyframes gradient {
+  0% {
+   background-position: 0% 50%;
   }
-  to {
-    transform: rotate(360deg);
+ 
+  50% {
+   background-position: 100% 50%;
   }
-}
+ 
+  100% {
+   background-position: 0% 50%;
+  }
+ }
+ 
+ @keyframes gradient {
+  0% {
+   background-position: 0% 50%;
+  }
+ 
+  50% {
+   background-position: 100% 50%;
+  }
+ 
+  100% {
+   background-position: 0% 50%;
+  }
+ }
+
+ @media only screen and (max-width: 600px) {
+   .card {
+    width: 80%;
+    min-height: 30%;
+    height: auto;
+   }
+ }
