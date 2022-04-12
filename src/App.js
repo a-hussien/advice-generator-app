@@ -3,16 +3,24 @@ import axios from 'axios';
 import 'normalize.css';
 import 'animate.css';
 import './App.css';
+import BackgroundImage1 from './images/workSpace1.jpg';
+import BackgroundImage2 from './images/workSpace2.jpg';
+import BackgroundImage3 from './images/workSpace3.jpg';
+import BackgroundImage4 from './images/workSpace4.jpg';
+import BackgroundImage5 from './images/workSpace5.jpg';
 
 const initialState = {
+  randomImg : 1,
   advice: "",
   color: "black",
   animation: ""
 };
 
+const images = [BackgroundImage1, BackgroundImage2, BackgroundImage3, BackgroundImage4, BackgroundImage5]
+
 const App = () => {
- 
-  const [{ advice, color, animation }, setState] = useState(initialState);
+  
+  const [{ randomImg, advice, color, animation }, setState] = useState(initialState);
     
   const clearState = useCallback(() => {
     return setState({ ...initialState });
@@ -20,18 +28,22 @@ const App = () => {
 
   const fetchAdvice = useCallback(() => {
 
+    const randomImg = Math.floor(Math.random() * images.length);
+
     axios.get('https://api.adviceslip.com/advice')
     .then((res)=>{
       
       setState((prevState) => {
           const {advice} = res.data.slip;
-          return ({ ...prevState, advice, color: 'black', animation :'animate__flipInX' })
+          
+          return ({ ...prevState, randomImg, advice, color: 'black', animation :'animate__flipInX' })
         }
       );
       
     })
     .catch((err) => {
-      setState((prevState) => ({ ...prevState, advice : 'No advice available for you at this moment :(', 
+
+      setState((prevState) => ({ ...prevState, randomImg, advice : 'No advice available for you at this moment :(', 
       color: '#f64747', animation :'animate__pulse' }));
 
       console.log(err)
@@ -46,7 +58,7 @@ const App = () => {
   }, [fetchAdvice]);
 
   return (
-    <div className='app'>
+    <div className='app' style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(${images[randomImg]})`}}>
       <div className='card'>
         <div className='advice'>
           <h1 className={`heading animate__animated ${animation}`} style={{color: color}}>
