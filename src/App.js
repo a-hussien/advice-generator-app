@@ -12,7 +12,7 @@ import BackgroundImage5 from './images/workSpace5.jpg';
 const initialState = {
   randomImg : 1,
   advice: "",
-  color: "black",
+  color: "white",
   animation: ""
 };
 
@@ -36,7 +36,7 @@ const App = () => {
       setState((prevState) => {
           const {advice} = res.data.slip;
           
-          return ({ ...prevState, randomImg, advice, color: 'black', animation :'animate__flipInX' })
+          return ({ ...prevState, randomImg, advice, color: 'white', animation :'animate__flipInX' })
         }
       );
       
